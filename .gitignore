@@ -1,0 +1,46 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Databases
+# MySQL / XAMPP
+mysql/data/
+*.sql
+*.sqlite
+
+# MongoDB
+logs/mongodb/
+data/db/
+*.log
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.sample
+!.env.example
+
+# IDEs/Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build/Dist
+dist/
+build/
+out/
