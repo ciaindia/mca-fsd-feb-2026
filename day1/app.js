@@ -46,8 +46,25 @@
 //     console.log("Happy New Year");
 // }
 
-setTimeout(() => {
-    console.log("Happy New Year");
-}, 10000)
+// setTimeout(() => {
+//     console.log("Happy New Year");
+// }, 10000)
 
 
+// let cnt = 0;
+
+// setInterval(() => {
+//     console.log(cnt++);
+// }, 1000)
+
+//CW: ClearInterval after 5 seconds
+
+let nums = [1, 2, 3, 4, 5]
+let sum = 0;
+
+for(let i = 0; i < nums.length; i++) {
+    sum = sum + nums[i]
+}
+
+console.log(sum);
+//CW:WAP to print square of all elements of array
