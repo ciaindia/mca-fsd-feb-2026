@@ -28,11 +28,18 @@ const add = (x, y) => {
     console.log(x + y);
 }
 
+
+
+
+const sub = (x, y) => {
+    console.log(x - y);
+}
+
 const calc = (a, b, op) => {
     op(a, b)        // add(5, 6)
 }
 calc(5, 6, add)
-
+calc(5, 6, sub)
 
 
 
