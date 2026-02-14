@@ -1,0 +1,8 @@
+import React from 'react'
+
+export default function Sqr(props) {
+    let x = props.num   //state variable
+  return (
+    <div>Square of {x} is {x * x}</div>
+  )
+}
