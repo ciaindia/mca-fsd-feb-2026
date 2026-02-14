@@ -4,11 +4,13 @@ import Greet from "./Greet"
 import Hello from "./Hello"
 import Hi from "./Hi"
 import Sqr from "./Sqr"
+import Users from "./Users"
 
 function App() {
   return (
     <>
-      <Fruits />
+      <Users />
+      {/* <Fruits /> */}
       {/* <Greet /> */}
       {/* <Sqr num={5}/>
       <Sqr num={6} />
