@@ -1,0 +1,7 @@
+Class Work:
+
+https://api.github.com/users
+
+WAP in vanilla JS to fetch data from github users api 
+
+and display in html table using DOM
