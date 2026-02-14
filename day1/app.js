@@ -15,31 +15,39 @@
 //     console.log(x * x);
 // }
 
-const getSqr = (x) => {
-    console.log(x * x);
-}
+// const getSqr = (x) => {
+//     console.log(x * x);
+// }
 
-getSqr(5)
-getSqr(6)
-getSqr(7)
+// getSqr(5)
+// getSqr(6)
+// getSqr(7)
 
-//CW: Design a function add to print addition
-const add = (x, y) => {
-    console.log(x + y);
-}
-
-
+// //CW: Design a function add to print addition
+// const add = (x, y) => {
+//     console.log(x + y);
+// }
 
 
-const sub = (x, y) => {
-    console.log(x - y);
-}
 
-const calc = (a, b, op) => {
-    op(a, b)        // add(5, 6)
-}
-calc(5, 6, add)
-calc(5, 6, sub)
 
+// const sub = (x, y) => {
+//     console.log(x - y);
+// }
+
+// const calc = (a, b, op) => {
+//     op(a, b)        // add(5, 6)
+// }
+// calc(5, 6, add)
+// calc(5, 6, sub)
+
+
+// const wish = () => {
+//     console.log("Happy New Year");
+// }
+
+setTimeout(() => {
+    console.log("Happy New Year");
+}, 10000)
 
 
