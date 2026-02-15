@@ -16,17 +16,89 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
             color: #333;
+            min-height: 100vh;
+            padding: 0;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex;
+            min-height: 100vh;
+            max-width: 100%;
+            margin: 0;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+        }
+
+        /* Left Sidebar Navigation */
+        nav {
+            width: 280px;
+            background: #2c3e50;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .nav-header {
+            color: white;
+            padding: 20px 15px;
+            border-bottom: 2px solid #667eea;
+            margin-bottom: 20px;
+        }
+
+        nav .nav-header h2 {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        nav .nav-header p {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        nav ul li {
+            width: 100%;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+            font-size: 0.95em;
+            border-left: 3px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background: #34495e;
+            border-left-color: #667eea;
+            padding-left: 20px;
+        }
+
+        nav ul li a.active {
+            background: #667eea;
+            border-left-color: #fff;
+        }
+
+        /* Main Content Area */
+        .content-wrapper {
+            margin-left: 280px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -47,36 +119,9 @@
             opacity: 0.9;
         }
 
-        nav {
-            background: #2c3e50;
-            padding: 15px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background: #667eea;
-            transform: translateY(-2px);
-        }
-
         main {
             padding: 40px;
+            flex: 1;
         }
 
         section {
@@ -234,8 +279,33 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 15px;
+            }
+
+            nav .nav-header {
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav .nav-header h2 {
+                font-size: 1.1em;
+            }
+
             nav ul {
-                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav ul li a {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .content-wrapper {
+                margin-left: 0;
             }
 
             header h1 {
@@ -250,24 +320,30 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>📚 Day 1: Modern JavaScript & React Fundamentals</h1>
-            <p>Full Stack Development - MCA FEB 2026</p>
-            <p style="font-size: 0.9em; margin-top: 10px;">Date: February 15, 2026</p>
-        </header>
-
         <nav>
+            <div class="nav-header">
+                <h2>📚 Day 1 Notes</h2>
+                <p>MCA FEB 2026</p>
+            </div>
             <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#js-basics">JavaScript Basics</a></li>
-                <li><a href="#functions">Functions</a></li>
-                <li><a href="#arrays">Array Methods</a></li>
-                <li><a href="#async">Async Operations</a></li>
-                <li><a href="#api">API Integration</a></li>
-                <li><a href="#react">React Fundamentals</a></li>
-                <li><a href="#classwork">Class Work</a></li>
+                <li><a href="#overview">📋 Overview</a></li>
+                <li><a href="#js-basics">🔤 JavaScript Basics</a></li>
+                <li><a href="#functions">⚡ Functions</a></li>
+                <li><a href="#arrays">📊 Array Methods</a></li>
+                <li><a href="#async">⏱️ Async Operations</a></li>
+                <li><a href="#api">🌐 API Integration</a></li>
+                <li><a href="#react">⚛️ React Fundamentals</a></li>
+                <li><a href="#classwork">📝 Class Work</a></li>
+                <li><a href="#summary">📌 Summary</a></li>
             </ul>
         </nav>
+
+        <div class="content-wrapper">
+            <header>
+                <h1>📚 Day 1: Modern JavaScript & React Fundamentals</h1>
+                <p>Full Stack Development - MCA FEB 2026</p>
+                <p style="font-size: 0.9em; margin-top: 10px;">Date: February 15, 2026</p>
+            </header>
 
         <main>
             <!-- Overview Section -->
@@ -1080,6 +1156,7 @@ npm run dev</div>
             <p>Modern JavaScript & React Fundamentals</p>
             <p style="margin-top: 10px; font-size: 0.9em;">Created with ❤️ for learning</p>
         </footer>
+        </div>
     </div>
 
     <script>
@@ -1094,6 +1171,30 @@ npm run dev</div>
                 secondaryColor: '#f093fb',
                 tertiaryColor: '#4facfe',
             }
+        });
+
+        // Add active class to navigation links on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
