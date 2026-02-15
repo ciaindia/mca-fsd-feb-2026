@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 - Modern JavaScript & React Fundamentals</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #667eea;
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        section h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: #555;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+            white-space: pre-wrap;
+        }
+
+        .code-block .comment {
+            color: #5c6370;
+        }
+
+        .code-block .keyword {
+            color: #c678dd;
+        }
+
+        .code-block .function {
+            color: #61afef;
+        }
+
+        .code-block .string {
+            color: #98c379;
+        }
+
+        .code-block .number {
+            color: #d19a66;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 5px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box {
+            background: #f0f9ff;
+            border-left: 5px solid #0ea5e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fff4e6;
+            border-left: 5px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .key-points {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .key-points ul {
+            margin-left: 20px;
+        }
+
+        .key-points li {
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+
+        .mermaid-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table th {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f5f5f5;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .timeline {
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Day 1: Modern JavaScript & React Fundamentals</h1>
+            <p>Full Stack Development - MCA FEB 2026</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Date: February 15, 2026</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#js-basics">JavaScript Basics</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#arrays">Array Methods</a></li>
+                <li><a href="#async">Async Operations</a></li>
+                <li><a href="#api">API Integration</a></li>
+                <li><a href="#react">React Fundamentals</a></li>
+                <li><a href="#classwork">Class Work</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Overview Section -->
+            <section id="overview">
+                <h2>📋 Day 1 Overview</h2>
+                
+                <div class="info-box">
+                    <strong>Learning Objectives:</strong> Introduction to Modern JavaScript (ES6+) and React fundamentals for Full Stack Development
+                </div>
+
+                <div class="key-points">
+                    <h3>Topics Covered</h3>
+                    <ul>
+                        <li><strong>JavaScript Fundamentals:</strong> Variables (let, const), data types, operators</li>
+                        <li><strong>Functions:</strong> Function declarations, expressions, and arrow functions</li>
+                        <li><strong>Higher-Order Functions:</strong> Callbacks and function composition</li>
+                        <li><strong>Array Methods:</strong> map(), filter(), and array manipulation</li>
+                        <li><strong>Asynchronous JavaScript:</strong> setTimeout, setInterval</li>
+                        <li><strong>API Integration:</strong> Fetch API and DOM manipulation</li>
+                        <li><strong>React Basics:</strong> Components, Props, Hooks (useState, useEffect)</li>
+                        <li><strong>HTTP Requests:</strong> Axios library for API calls</li>
+                    </ul>
+                </div>
+
+
+            </section>
+
+            <!-- JavaScript Basics Section -->
+            <section id="js-basics">
+                <h2>🔤 JavaScript Basics</h2>
+
+                <h3>Variables and Constants</h3>
+                
+<div class="code-block"><span class="comment">// Variables can be reassigned</span>
+<span class="keyword">let</span> x = <span class="number">10</span>;
+<span class="keyword">console</span>.log(`X = ${x}`);
+
+<span class="comment">// Constants cannot be reassigned</span>
+<span class="keyword">const</span> PI = <span class="number">3.14</span>; 
+<span class="keyword">console</span>.log(`PI = ${PI}`);</div>
+
+                <div class="key-points">
+                    <h4>Key Differences:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>let</th>
+                                <th>const</th>
+                                <th>var (old)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Scope</td>
+                                <td>Block-scoped</td>
+                                <td>Block-scoped</td>
+                                <td>Function-scoped</td>
+                            </tr>
+                            <tr>
+                                <td>Reassignable</td>
+                                <td>✅ Yes</td>
+                                <td>❌ No</td>
+                                <td>✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td>Hoisting</td>
+                                <td>Not initialized</td>
+                                <td>Not initialized</td>
+                                <td>Initialized with undefined</td>
+                            </tr>
+                            <tr>
+                                <td>Best Practice</td>
+                                <td>Use for changing values</td>
+                                <td>Use by default</td>
+                                <td>Avoid in modern JS</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong> Always use <code>const</code> by default. Only use <code>let</code> when you know the value will change. Avoid <code>var</code> in modern JavaScript.
+                </div>
+            </section>
+
+            <!-- Functions Section -->
+            <section id="functions">
+                <h2>⚡ Functions in JavaScript</h2>
+
+                <h3>Three Ways to Define Functions</h3>
+
+                <h4>1. Function Declaration</h4>
+<div class="code-block"><span class="keyword">function</span> <span class="function">getSqr</span>(x) {
+    <span class="keyword">console</span>.log(x * x);
+}
+
+<span class="function">getSqr</span>(<span class="number">5</span>); <span class="comment">// Output: 25</span></div>
+
+                <h4>2. Function Expression</h4>
+<div class="code-block"><span class="keyword">const</span> getSqr = <span class="keyword">function</span> (x) {
+    <span class="keyword">console</span>.log(x * x);
+}
+
+<span class="function">getSqr</span>(<span class="number">6</span>); <span class="comment">// Output: 36</span></div>
+
+                <h4>3. Arrow Function (ES6+) ⭐</h4>
+<div class="code-block"><span class="keyword">const</span> getSqr = (x) <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(x * x);
+}
+
+<span class="function">getSqr</span>(<span class="number">7</span>); <span class="comment">// Output: 49</span></div>
+
+                <div class="info-box">
+                    <strong>Arrow Functions Benefits:</strong>
+                    <ul>
+                        <li>Concise syntax</li>
+                        <li>Implicit return for single expressions</li>
+                        <li>Lexical <code>this</code> binding</li>
+                        <li>Modern and widely used in React</li>
+                    </ul>
+                </div>
+
+                <h3>Higher-Order Functions & Callbacks</h3>
+                
+                <div class="mermaid-container">
+                    <div class="mermaid">
+                        graph TD
+                            A[Higher-Order Function] -->|Receives| B[Function as Parameter]
+                            A -->|Executes| C[Callback Function]
+                            C -->|Performs| D[Specific Operation]
+                            
+                            style A fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+                            style B fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
+                            style C fill:#f093fb,stroke:#333,stroke-width:2px
+                            style D fill:#4facfe,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+
+<div class="code-block"><span class="keyword">const</span> add = (x, y) <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(x + y);
+}
+
+<span class="keyword">const</span> sub = (x, y) <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(x - y);
+}
+
+<span class="comment">// Higher-order function that accepts a callback</span>
+<span class="keyword">const</span> calc = (a, b, op) <span class="keyword">=&gt;</span> {
+    op(a, b)  <span class="comment">// Execute the callback function</span>
+}
+
+<span class="function">calc</span>(<span class="number">5</span>, <span class="number">6</span>, add); <span class="comment">// Output: 11</span>
+<span class="function">calc</span>(<span class="number">5</span>, <span class="number">6</span>, sub); <span class="comment">// Output: -1</span></div>
+
+                <div class="key-points">
+                    <strong>Callback Functions:</strong>
+                    <ul>
+                        <li>Functions passed as arguments to other functions</li>
+                        <li>Enable code reusability and abstraction</li>
+                        <li>Foundation for asynchronous programming</li>
+                        <li>Commonly used in array methods, event handlers, and timers</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Array Methods Section -->
+            <section id="arrays">
+                <h2>📊 Array Methods</h2>
+
+                <h3>Array Manipulation</h3>
+
+                <h4>Basic Array Iteration</h4>
+<div class="code-block"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">let</span> sum = <span class="number">0</span>;
+
+<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) {
+    sum = sum + nums[i];
+}
+
+<span class="keyword">console</span>.log(sum); <span class="comment">// Output: 15</span></div>
+
+                <h4>map() - Transform Array Elements</h4>
+<div class="code-block"><span class="comment">// Traditional approach</span>
+<span class="keyword">let</span> sqr_arr = [];
+<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) {
+    sqr_arr.push(nums[i] * nums[i]);
+}
+
+<span class="comment">// Modern approach with map() ⭐</span>
+<span class="keyword">let</span> sqr_arr = nums.<span class="function">map</span>(x <span class="keyword">=&gt;</span> x * x);
+<span class="keyword">console</span>.log(sqr_arr); <span class="comment">// [1, 4, 9, 16, 25]</span></div>
+
+                <h4>filter() - Select Array Elements</h4>
+<div class="code-block"><span class="comment">// Filter even numbers</span>
+<span class="keyword">let</span> even_arr = nums.<span class="function">filter</span>(x <span class="keyword">=&gt;</span> x % <span class="number">2</span> == <span class="number">0</span>);
+<span class="keyword">console</span>.log(even_arr); <span class="comment">// [2, 4]</span>
+
+<span class="comment">// Filter with objects</span>
+<span class="keyword">let</span> members = [
+    {name: <span class="string">"Amit"</span>, age: <span class="number">23</span>},
+    {name: <span class="string">"Sumit"</span>, age: <span class="number">19</span>},
+    {name: <span class="string">"Suresh"</span>, age: <span class="number">22</span>},
+];
+
+<span class="keyword">let</span> allowed_members = members.<span class="function">filter</span>((m) <span class="keyword">=&gt;</span> {
+    <span class="keyword">return</span> m.age &gt;= <span class="number">21</span>;
+});
+
+<span class="keyword">console</span>.log(allowed_members);
+<span class="comment">// [{name: "Amit", age: 23}, {name: "Suresh", age: 22}]</span></div>
+
+                <div class="mermaid-container">
+                    <h3>Array Methods Data Flow</h3>
+                    <div class="mermaid">
+                        graph LR
+                            A[Original Array] -->|map| B[Transform Each Element]
+                            B --> C[New Array Same Length]
+                            
+                            A -->|filter| D[Test Each Element]
+                            D --> E[New Array Subset]
+                            
+                            A -->|forEach| F[Process Each Element]
+                            F --> G[No Return Value]
+                            
+                            style A fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+                            style C fill:#f093fb,stroke:#333,stroke-width:2px
+                            style E fill:#4facfe,stroke:#333,stroke-width:2px
+                            style G fill:#43e97b,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h4>Array Method Comparison</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Purpose</th>
+                                <th>Returns</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>map()</code></td>
+                                <td>Transform elements</td>
+                                <td>New array (same length)</td>
+                                <td>Square all numbers, format strings</td>
+                            </tr>
+                            <tr>
+                                <td><code>filter()</code></td>
+                                <td>Select elements</td>
+                                <td>New array (subset)</td>
+                                <td>Get even numbers, filter by age</td>
+                            </tr>
+                            <tr>
+                                <td><code>forEach()</code></td>
+                                <td>Execute function</td>
+                                <td>undefined</td>
+                                <td>Log each element, update DOM</td>
+                            </tr>
+                            <tr>
+                                <td><code>reduce()</code></td>
+                                <td>Accumulate value</td>
+                                <td>Single value</td>
+                                <td>Sum, find max/min, group data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Async Operations Section -->
+            <section id="async">
+                <h2>⏱️ Asynchronous Operations</h2>
+
+                <h3>setTimeout - Delayed Execution</h3>
+<div class="code-block"><span class="comment">// Execute after 10 seconds (10000ms)</span>
+<span class="function">setTimeout</span>(() <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(<span class="string">"Happy New Year"</span>);
+}, <span class="number">10000</span>);</div>
+
+                <h3>setInterval - Repeated Execution</h3>
+<div class="code-block"><span class="keyword">let</span> cnt = <span class="number">0</span>;
+
+<span class="comment">// Execute every second (1000ms)</span>
+<span class="function">setInterval</span>(() <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(cnt++);
+}, <span class="number">1000</span>);
+
+<span class="comment">// Output: 0, 1, 2, 3, 4, 5, ...</span></div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Class Work Challenge:</strong> How to clear the interval after 5 seconds?
+                    <details style="margin-top: 10px;">
+                        <summary style="cursor: pointer; font-weight: bold;">Click to see solution</summary>
+                        <div class="code-block" style="margin-top: 10px;">
+<span class="keyword">let</span> cnt = <span class="number">0</span>;
+<span class="keyword">let</span> intervalId = <span class="function">setInterval</span>(() <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(cnt++);
+}, <span class="number">1000</span>);
+
+<span class="function">setTimeout</span>(() <span class="keyword">=&gt;</span> {
+    <span class="function">clearInterval</span>(intervalId);
+    <span class="keyword">console</span>.log(<span class="string">"Interval cleared!"</span>);
+}, <span class="number">5000</span>);
+                        </div>
+                    </details>
+                </div>
+
+                <div class="mermaid-container">
+                    <h3>Timer Execution Flow</h3>
+                    <div class="mermaid">
+                        sequenceDiagram
+                            participant Code
+                            participant Timer
+                            participant Callback
+                            
+                            Code->>Timer: setTimeout(callback, 1000)
+                            Note over Timer: Wait 1000ms
+                            Timer->>Callback: Execute callback
+                            Callback-->>Code: Complete
+                            
+                            Code->>Timer: setInterval(callback, 1000)
+                            loop Every 1000ms
+                                Timer->>Callback: Execute callback
+                                Callback-->>Timer: Continue
+                            end
+                            Code->>Timer: clearInterval()
+                            Note over Timer: Stop execution
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Integration Section -->
+            <section id="api">
+                <h2>🌐 API Integration with Fetch</h2>
+
+                <h3>Fetching Data from GitHub API</h3>
+
+<div class="code-block"><span class="keyword">const</span> url = <span class="string">"https://api.github.com/users"</span>;
+
+<span class="function">fetch</span>(url)
+    .<span class="function">then</span>(response <span class="keyword">=&gt;</span> response.json())
+    .<span class="function">then</span>(users <span class="keyword">=&gt;</span> {
+        <span class="keyword">const</span> tbody = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">"tbody"</span>);
+        
+        users.<span class="function">forEach</span>(user <span class="keyword">=&gt;</span> {
+            tbody.innerHTML += `
+                <span class="string">&lt;tr&gt;
+                    &lt;td&gt;</span>${user.id}<span class="string">&lt;/td&gt;
+                    &lt;td&gt;</span>${user.login}<span class="string">&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;img src="</span>${user.avatar_url}<span class="string">" width="50"&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;</span>
+            `;
+        });
+    })
+    .<span class="function">catch</span>(error <span class="keyword">=&gt;</span> {
+        <span class="keyword">console</span>.log(<span class="string">"Error:"</span>, error);
+    });</div>
+
+                <div class="mermaid-container">
+                    <h3>Fetch API Data Flow</h3>
+                    <div class="mermaid">
+                        graph TD
+                            A[Client Code] -->|1. fetch URL| B[HTTP GET Request]
+                            B -->|2. Response received| C[Response Object]
+                            C -->|3. response.json| D[Parse JSON]
+                            D -->|4. Data ready| E[Process Users Array]
+                            E -->|5. forEach user| F[Create Table Rows]
+                            F -->|6. innerHTML| G[Update DOM]
+                            
+                            B -.->|Error| H[catch block]
+                            C -.->|Parse Error| H
+                            
+                            style A fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+                            style G fill:#43e97b,stroke:#333,stroke-width:2px
+                            style H fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>Understanding Fetch API:</strong>
+                    <ul>
+                        <li><code>fetch(url)</code> returns a Promise</li>
+                        <li>First <code>.then()</code> receives the Response object</li>
+                        <li><code>response.json()</code> parses JSON and returns another Promise</li>
+                        <li>Second <code>.then()</code> receives the actual data</li>
+                        <li><code>.catch()</code> handles any errors in the chain</li>
+                    </ul>
+                </div>
+
+                <h3>HTML Table Structure</h3>
+<div class="code-block"><span class="keyword">&lt;table</span> border=<span class="string">"1"</span><span class="keyword">&gt;</span>
+    <span class="keyword">&lt;thead&gt;</span>
+        <span class="keyword">&lt;tr&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>ID<span class="keyword">&lt;/th&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>Login<span class="keyword">&lt;/th&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>Avatar<span class="keyword">&lt;/th&gt;</span>
+        <span class="keyword">&lt;/tr&gt;</span>
+    <span class="keyword">&lt;/thead&gt;</span>
+    <span class="keyword">&lt;tbody</span> id=<span class="string">"tbody"</span><span class="keyword">&gt;</span>
+        <span class="comment">&lt;!-- Dynamically populated --&gt;</span>
+    <span class="keyword">&lt;/tbody&gt;</span>
+<span class="keyword">&lt;/table&gt;</span></div>
+            </section>
+
+            <!-- React Fundamentals Section -->
+            <section id="react">
+                <h2>⚛️ React Fundamentals</h2>
+
+                <h3>Project Setup with Vite</h3>
+<div class="code-block"><span class="comment"># Create new React project with Vite</span>
+npm create vite@latest my-react-app -- --template react
+cd my-react-app
+npm install
+
+<span class="comment"># Install additional dependencies</span>
+npm install axios
+
+<span class="comment"># Start development server</span>
+npm run dev</div>
+
+                <div class="info-box">
+                    <strong>Why Vite?</strong>
+                    <ul>
+                        <li>⚡ Lightning-fast development server</li>
+                        <li>🔥 Hot Module Replacement (HMR)</li>
+                        <li>📦 Optimized build process</li>
+                        <li>🎯 Modern tooling out of the box</li>
+                    </ul>
+                </div>
+
+                <h3>React Component Architecture</h3>
+
+                <div class="mermaid-container">
+                    <div class="mermaid">
+                        graph TD
+                            A[App.jsx - Root Component] --> B[Users.jsx]
+                            A --> C[Fruits.jsx]
+                            A --> D[Greet.jsx]
+                            A --> E[Sqr.jsx]
+                            A --> F[Add.jsx]
+                            A --> G[Hi.jsx]
+                            A --> H[Hello.jsx]
+                            
+                            B -->|useState| B1[State: users array]
+                            B -->|useEffect| B2[Fetch GitHub API]
+                            B -->|axios| B3[HTTP Request]
+                            
+                            E -->|props| E1[num prop]
+                            F -->|props| F1[num1, num2 props]
+                            
+                            style A fill:#61dafb,stroke:#333,stroke-width:3px
+                            style B fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+                            style B1 fill:#f093fb,stroke:#333,stroke-width:2px
+                            style B2 fill:#4facfe,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+
+                <h3>Functional Components</h3>
+
+                <h4>1. Simple Component (Hi.jsx)</h4>
+<div class="code-block"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+
+<span class="keyword">export default function</span> <span class="function">Hi</span>() {
+  <span class="keyword">return</span> (
+    <span class="keyword">&lt;div&gt;</span>Hello from Hi Component<span class="keyword">&lt;/div&gt;</span>
+  )
+}</div>
+
+                <h4>2. Component with Props (Sqr.jsx)</h4>
+<div class="code-block"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+
+<span class="keyword">export default function</span> <span class="function">Sqr</span>(props) {
+    <span class="keyword">let</span> x = props.num   <span class="comment">// Receive prop</span>
+    <span class="keyword">return</span> (
+        <span class="keyword">&lt;div&gt;</span>Square of {x} is {x * x}<span class="keyword">&lt;/div&gt;</span>
+    )
+}
+
+<span class="comment">// Usage in App.jsx:</span>
+<span class="keyword">&lt;Sqr</span> num={<span class="number">5</span>}<span class="keyword">/&gt;</span>  <span class="comment">// Output: Square of 5 is 25</span>
+<span class="keyword">&lt;Sqr</span> num={<span class="number">6</span>}<span class="keyword">/&gt;</span>  <span class="comment">// Output: Square of 6 is 36</span></div>
+
+                <h4>3. Component with Event Handling (Greet.jsx)</h4>
+<div class="code-block"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+
+<span class="keyword">export default function</span> <span class="function">Greet</span>() {
+    <span class="keyword">return</span> (
+        <span class="keyword">&lt;div&gt;</span>
+            <span class="keyword">&lt;button</span> onClick={() <span class="keyword">=&gt;</span> { alert(<span class="string">"Hello World"</span>) }}<span class="keyword">&gt;</span>
+                Click Me
+            <span class="keyword">&lt;/button&gt;</span>
+        <span class="keyword">&lt;/div&gt;</span>
+    )
+}</div>
+
+                <h4>4. Component with Array Rendering (Fruits.jsx)</h4>
+<div class="code-block"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+
+<span class="keyword">export default function</span> <span class="function">Fruits</span>() {
+    <span class="keyword">let</span> fruits = [<span class="string">'Apple'</span>, <span class="string">'Banana'</span>, <span class="string">'Chiku'</span>]
+    <span class="keyword">return</span> (
+        <span class="keyword">&lt;div&gt;</span>
+            <span class="keyword">&lt;ul&gt;</span>
+                {fruits.<span class="function">map</span>((f) <span class="keyword">=&gt;</span> <span class="keyword">&lt;li&gt;</span>{f}<span class="keyword">&lt;/li&gt;</span>)}
+            <span class="keyword">&lt;/ul&gt;</span>
+        <span class="keyword">&lt;/div&gt;</span>
+    )
+}</div>
+
+                <h3>React Hooks</h3>
+
+                <h4>useState & useEffect - API Integration (Users.jsx)</h4>
+<div class="code-block"><span class="keyword">import</span> React, { useEffect, useState } <span class="keyword">from</span> <span class="string">'react'</span>
+<span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>
+
+<span class="keyword">export default function</span> <span class="function">Users</span>() {
+  <span class="comment">// State management</span>
+  <span class="keyword">const</span> [users, setUsers] = <span class="function">useState</span>([])
+
+  <span class="comment">// Side effect - runs after component mounts</span>
+  <span class="function">useEffect</span>(() <span class="keyword">=&gt;</span> {
+    axios.<span class="function">get</span>(<span class="string">'https://api.github.com/users'</span>)
+      .<span class="function">then</span>(response <span class="keyword">=&gt;</span> {
+        <span class="function">setUsers</span>(response.data)
+      })
+      .<span class="function">catch</span>(error <span class="keyword">=&gt;</span> {
+        <span class="keyword">console</span>.error(error)
+      })
+  }, [])  <span class="comment">// Empty dependency array = run once on mount</span>
+
+  <span class="keyword">return</span> (
+    <span class="keyword">&lt;div&gt;</span>
+      <span class="keyword">&lt;table</span> border=<span class="string">"1"</span> cellPadding=<span class="string">"10"</span><span class="keyword">&gt;</span>
+        <span class="keyword">&lt;thead&gt;</span>
+          <span class="keyword">&lt;tr&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>ID<span class="keyword">&lt;/th&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>Username<span class="keyword">&lt;/th&gt;</span>
+            <span class="keyword">&lt;th&gt;</span>Avatar<span class="keyword">&lt;/th&gt;</span>
+          <span class="keyword">&lt;/tr&gt;</span>
+        <span class="keyword">&lt;/thead&gt;</span>
+        <span class="keyword">&lt;tbody&gt;</span>
+          {users.<span class="function">map</span>(user <span class="keyword">=&gt;</span> (
+            <span class="keyword">&lt;tr</span> key={user.id}<span class="keyword">&gt;</span>
+              <span class="keyword">&lt;td&gt;</span>{user.id}<span class="keyword">&lt;/td&gt;</span>
+              <span class="keyword">&lt;td&gt;</span>{user.login}<span class="keyword">&lt;/td&gt;</span>
+              <span class="keyword">&lt;td&gt;</span>
+                <span class="keyword">&lt;img</span> src={user.avatar_url} alt={user.login} width=<span class="string">"50"</span> <span class="keyword">/&gt;</span>
+              <span class="keyword">&lt;/td&gt;</span>
+            <span class="keyword">&lt;/tr&gt;</span>
+          ))}
+        <span class="keyword">&lt;/tbody&gt;</span>
+      <span class="keyword">&lt;/table&gt;</span>
+    <span class="keyword">&lt;/div&gt;</span>
+  )
+}</div>
+
+                <div class="mermaid-container">
+                    <h3>React Component Lifecycle with Hooks</h3>
+                    <div class="mermaid">
+                        sequenceDiagram
+                            participant Component
+                            participant State
+                            participant Effect
+                            participant API
+                            participant DOM
+                            
+                            Note over Component: Component Render
+                            Component->>State: useState([])
+                            State-->>Component: users = []
+                            Component->>DOM: Initial Render (empty table)
+                            
+                            Component->>Effect: useEffect runs
+                            Effect->>API: axios.get(users URL)
+                            API-->>Effect: Response with users data
+                            Effect->>State: setUsers(data)
+                            
+                            State->>Component: Trigger Re-render
+                            Component->>DOM: Update DOM with users
+                            Note over DOM: Table populated
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h4>Key React Concepts Covered:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Purpose</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Components</strong></td>
+                                <td>Reusable UI building blocks</td>
+                                <td>Hi, Hello, Greet, Sqr, Users</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Props</strong></td>
+                                <td>Pass data to components</td>
+                                <td>&lt;Sqr num={5} /&gt;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>useState</strong></td>
+                                <td>Manage component state</td>
+                                <td>const [users, setUsers] = useState([])</td>
+                            </tr>
+                            <tr>
+                                <td><strong>useEffect</strong></td>
+                                <td>Handle side effects</td>
+                                <td>API calls, subscriptions, timers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>JSX</strong></td>
+                                <td>JavaScript + HTML syntax</td>
+                                <td>&lt;div&gt;{variable}&lt;/div&gt;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>map()</strong></td>
+                                <td>Render lists</td>
+                                <td>{users.map(user =&gt; ...)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 axios vs fetch:</strong>
+                    <ul>
+                        <li><strong>axios</strong>: Automatic JSON parsing, better error handling, request/response interceptors</li>
+                        <li><strong>fetch</strong>: Native browser API, requires manual JSON parsing, simpler for basic requests</li>
+                        <li>Both are valid choices; axios provides more features and convenience</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Class Work Section -->
+            <section id="classwork">
+                <h2>📝 Class Work Exercises</h2>
+
+                <div class="warning-box">
+                    <strong>Practice Problems from Day 1:</strong>
+                </div>
+
+                <h3>Exercise 1: Addition Function</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> Design a function <code>add</code> to print addition of two numbers
+                </div>
+<div class="code-block"><span class="keyword">const</span> add = (x, y) <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(x + y);
+}
+
+<span class="function">add</span>(<span class="number">5</span>, <span class="number">10</span>); <span class="comment">// Output: 15</span></div>
+
+                <h3>Exercise 2: Clear Interval</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> Use <code>setInterval</code> to count and <code>clearInterval</code> to stop after 5 seconds
+                </div>
+<div class="code-block"><span class="keyword">let</span> cnt = <span class="number">0</span>;
+<span class="keyword">let</span> intervalId = <span class="function">setInterval</span>(() <span class="keyword">=&gt;</span> {
+    <span class="keyword">console</span>.log(cnt++);
+}, <span class="number">1000</span>);
+
+<span class="function">setTimeout</span>(() <span class="keyword">=&gt;</span> {
+    <span class="function">clearInterval</span>(intervalId);
+    <span class="keyword">console</span>.log(<span class="string">"Stopped!"</span>);
+}, <span class="number">5000</span>);</div>
+
+                <h3>Exercise 3: Array of Squares</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> WAP to print square of all elements of array and assign it to new array
+                </div>
+<div class="code-block"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+
+<span class="comment">// Method 1: Using for loop</span>
+<span class="keyword">let</span> sqr_arr = [];
+<span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; nums.length; i++) {
+    sqr_arr.push(nums[i] * nums[i]);
+}
+
+<span class="comment">// Method 2: Using map (recommended)</span>
+<span class="keyword">let</span> sqr_arr = nums.<span class="function">map</span>(x <span class="keyword">=&gt;</span> x * x);
+<span class="keyword">console</span>.log(sqr_arr); <span class="comment">// [1, 4, 9, 16, 25]</span></div>
+
+                <h3>Exercise 4: Cube of Elements</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> WAP to find cube of all elements
+                </div>
+<div class="code-block"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">let</span> cube_arr = nums.<span class="function">map</span>(x <span class="keyword">=&gt;</span> x * x * x);
+<span class="keyword">console</span>.log(cube_arr); <span class="comment">// [1, 8, 27, 64, 125]</span></div>
+
+                <h3>Exercise 5: Filter Even Numbers</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> WAP to find even numbers of array using filter function
+                </div>
+<div class="code-block"><span class="keyword">let</span> nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+<span class="keyword">let</span> even_arr = nums.<span class="function">filter</span>(x <span class="keyword">=&gt;</span> x % <span class="number">2</span> == <span class="number">0</span>);
+<span class="keyword">console</span>.log(even_arr); <span class="comment">// [2, 4]</span></div>
+
+                <h3>Exercise 6: GitHub Users API</h3>
+                <div class="info-box">
+                    <strong>Task:</strong> WAP in vanilla JS to fetch data from GitHub users API and display in HTML table using DOM
+                    <br><strong>API:</strong> https://api.github.com/users
+                </div>
+<div class="code-block"><span class="comment">// See complete solution in github-users.html</span>
+<span class="keyword">const</span> url = <span class="string">"https://api.github.com/users"</span>;
+
+<span class="function">fetch</span>(url)
+    .<span class="function">then</span>(response <span class="keyword">=&gt;</span> response.json())
+    .<span class="function">then</span>(users <span class="keyword">=&gt;</span> {
+        <span class="keyword">const</span> tbody = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">"tbody"</span>);
+        users.<span class="function">forEach</span>(user <span class="keyword">=&gt;</span> {
+            tbody.innerHTML += `
+                <span class="keyword">&lt;tr&gt;</span>
+                    <span class="keyword">&lt;td&gt;</span>${user.id}<span class="keyword">&lt;/td&gt;</span>
+                    <span class="keyword">&lt;td&gt;</span>${user.login}<span class="keyword">&lt;/td&gt;</span>
+                    <span class="keyword">&lt;td&gt;&lt;img</span> src=<span class="string">"</span>${user.avatar_url}<span class="string">"</span> width=<span class="string">"50"</span><span class="keyword">&gt;&lt;/td&gt;</span>
+                <span class="keyword">&lt;/tr&gt;</span>
+            `;
+        });
+    })
+    .<span class="function">catch</span>(error <span class="keyword">=&gt;</span> <span class="keyword">console</span>.log(<span class="string">"Error:"</span>, error));</div>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary">
+                <h2>📌 Day 1 Summary</h2>
+
+                <div class="mermaid-container">
+                    <h3>Complete Learning Path</h3>
+                    <div class="mermaid">
+                        graph LR
+                            A[JavaScript Fundamentals] --> B[Functions & Callbacks]
+                            B --> C[Array Methods]
+                            C --> D[Async Operations]
+                            D --> E[API Integration]
+                            E --> F[React Basics]
+                            F --> G[React Hooks]
+                            
+                            A1[let, const, variables] --> A
+                            A2[Data types] --> A
+                            
+                            B1[Arrow functions] --> B
+                            B2[Higher-order functions] --> B
+                            
+                            C1[map] --> C
+                            C2[filter] --> C
+                            
+                            D1[setTimeout] --> D
+                            D2[setInterval] --> D
+                            
+                            E1[fetch API] --> E
+                            E2[DOM manipulation] --> E
+                            
+                            F1[Components] --> F
+                            F2[Props] --> F
+                            
+                            G1[useState] --> G
+                            G2[useEffect] --> G
+                            G3[axios] --> G
+                            
+                            style A fill:#667eea,stroke:#333,stroke-width:2px,color:#fff
+                            style B fill:#764ba2,stroke:#333,stroke-width:2px,color:#fff
+                            style C fill:#f093fb,stroke:#333,stroke-width:2px
+                            style D fill:#4facfe,stroke:#333,stroke-width:2px
+                            style E fill:#43e97b,stroke:#333,stroke-width:2px
+                            style F fill:#fa709a,stroke:#333,stroke-width:2px
+                            style G fill:#30cfd0,stroke:#333,stroke-width:2px
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h3>Key Takeaways:</h3>
+                    <ul>
+                        <li>✅ Modern JavaScript ES6+ features (let, const, arrow functions)</li>
+                        <li>✅ Functional programming concepts (map, filter, callbacks)</li>
+                        <li>✅ Asynchronous programming (setTimeout, setInterval, fetch)</li>
+                        <li>✅ API integration with vanilla JavaScript and React</li>
+                        <li>✅ React fundamentals (components, props, JSX)</li>
+                        <li>✅ React Hooks (useState for state, useEffect for side effects)</li>
+                        <li>✅ Project setup with modern tooling (Vite)</li>
+                        <li>✅ HTTP requests with fetch and axios</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <h3>🎯 Next Steps:</h3>
+                    <ul>
+                        <li>Practice all class work exercises</li>
+                        <li>Experiment with different array methods (reduce, find, some, every)</li>
+                        <li>Build more React components with state and props</li>
+                        <li>Explore React Router for navigation</li>
+                        <li>Learn about component styling in React</li>
+                        <li>Study more React hooks (useContext, useRef, useMemo)</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 MCA Full Stack Development - Day 1 Notes</p>
+            <p>Modern JavaScript & React Fundamentals</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Created with ❤️ for learning</p>
+        </footer>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#667eea',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#333',
+                lineColor: '#764ba2',
+                secondaryColor: '#f093fb',
+                tertiaryColor: '#4facfe',
+            }
+        });
+    </script>
+</body>
+</html>
