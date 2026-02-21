@@ -27,10 +27,17 @@ app.delete("/employee/:id", (req, res) => {
 })
 
 //CW: Design put method to update employee record in emps using id and map method
-    app.put("/employee/:id", (req, res) => {
+app.put("/employee/:id", (req, res) => {
     let id = req.params.id
     emps = emps.map(emp => emp.id == id ? {id: id, name: req.body.name, salary: req.body.salary} : emp)
     res.send("Employee updated successfully")
+})
+
+//CW: Design get method to read single employee from emps 
+app.get("/employee/:id", (req, res) => {
+    let id = req.params.id
+    let emp = emps.find(emp => emp.id == id)
+    res.send(emp)
 })
 
 
