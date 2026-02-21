@@ -10,15 +10,24 @@ export default function EmployeeListing() {
         axios.get(url).then(res => setEmps(res.data))
     }, [])
 
+    const deleteEmployee = (id) => {
+        if(window.confirm("Are you sure you want to delete this employee?")){
+            axios.delete(url + "/" + id)
+            alert("Employee deleted successfully")
+            window.location.reload()
+        }
+    }
+
   return (
     <div>
         <h1>Employee Listing</h1>
-        <table>
+        <table border={1}>
             <thead>
                 <tr>
                     <td>Id</td>
                     <td>Name</td>
                     <td>Salary</td>
+                    <td colSpan={2}>Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +36,8 @@ export default function EmployeeListing() {
                         <td>{emp.id}</td>
                         <td>{emp.name}</td>
                         <td>{emp.salary}</td>
+                        <td><button onClick={() => deleteEmployee(emp.id)}>Delete</button></td>
+                        <td><button>Update</button></td>
                     </tr>
                 ))}
             </tbody>
