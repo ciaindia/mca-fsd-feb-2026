@@ -2,6 +2,10 @@ const express = require("express")
 const app = express()
 app.use(express.json())
 
+//npm install cors
+const cors = require("cors")
+app.use(cors())
+
 var cnt = 1;
 var emps = [
     {id: cnt++, name: "Amit", salary: 22000}
