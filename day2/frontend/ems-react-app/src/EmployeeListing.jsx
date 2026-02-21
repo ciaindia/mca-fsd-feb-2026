@@ -3,7 +3,6 @@ import axios from 'axios'
 
 export default function EmployeeListing() {
     const url = "http://localhost:3001/employee"
-
     const [emps, setEmps] = useState([])
 
     useEffect(() => {
@@ -17,6 +16,17 @@ export default function EmployeeListing() {
             window.location.reload()
         }
     }
+
+    const updateEmployee = (id) => {
+        const name = prompt("Enter new name")
+        const salary = prompt("Enter new salary")
+        if (name && salary) {
+            axios.put(url + "/" + id, { name, salary }).then(() => {
+                alert("Employee updated successfully")
+                window.location.reload()
+            })
+        }
+    }   
 
   return (
     <div>
@@ -37,7 +47,7 @@ export default function EmployeeListing() {
                         <td>{emp.name}</td>
                         <td>{emp.salary}</td>
                         <td><button onClick={() => deleteEmployee(emp.id)}>Delete</button></td>
-                        <td><button>Update</button></td>
+                        <td><button onClick={() => updateEmployee(emp.id)}>Edit</button></td>
                     </tr>
                 ))}
             </tbody>
