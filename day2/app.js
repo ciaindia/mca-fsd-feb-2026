@@ -8,6 +8,29 @@ app.get("/", (req, res) => {
 })
 
 
+//CW: Design api to print square of number
+// http://localhost:3000/sqr/7 
+
+app.get("/sqr/:num", (req, res) => {
+    let x = req.params.num
+    res.send(`Square of ${x} is ${x * x}`)
+})
+
+//CW: Design api to print addition of 2 numbers
+// http://localhost:3000/add/5/6
+
+
+
+
+
+app.use(express.json())
+
+app.post("/calc", (req, res) => {
+  let x = req.body.num1
+  let y = req.body.num2
+
+  res.send(`${x} + ${y} = ${x + y}`)
+})
 
 
 
@@ -26,6 +49,14 @@ app.get("/calc", (req, res) => {
 //CW: POST PUT and DELETE method for /calc
 
 
+
+app.put("/calc", (req, res) => {
+    res.send("PUT Calc")
+})
+
+app.delete("/calc", (req, res) => {
+    res.send("DELETE Calc")
+})
 
 
 
